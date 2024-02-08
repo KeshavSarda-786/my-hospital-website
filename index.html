@@ -1,0 +1,75 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Hospital - Book Appointment</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Log In/Sign Up</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="appointment.html">Book Appointment</a></li>
+        <li><a href="upload.html">Upload Documents</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Welcome to My Hospital</h1>
+    <p>Your trusted healthcare partner.</p>
+    <p>Book an appointment with our experienced medical professionals for personalized care.</p>
+    <p>Explore our website for more information about our services.</p>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Function to highlight the active link in the navigation menu
+      function highlightActiveLink() {
+        const currentPath = window.location.pathname;
+        const links = document.querySelectorAll('nav a');
+
+        links.forEach((link) => {
+          const linkPath = link.getAttribute('href');
+
+          if (currentPath === linkPath) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+
+      // Call the function to highlight the active link on page load
+      highlightActiveLink();
+
+      // Function to toggle the navigation menu on small screens
+      function toggleMenu() {
+        const navList = document.querySelector('nav ul');
+        navList.classList.toggle('show');
+      }
+
+      // Event listener for the menu button
+      const menuButton = document.querySelector('.menu-button');
+      if (menuButton) {
+        menuButton.addEventListener('click', toggleMenu);
+      }
+
+      // Event listener for closing the menu when a link is clicked
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          const navList = document.querySelector('nav ul');
+          navList.classList.remove('show');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

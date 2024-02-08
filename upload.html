@@ -1,0 +1,56 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Upload Documents</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Upload Documents</h1>
+  <form id="uploadForm">
+    <label for="documentType">Document Type:</label>
+    <input type="text" id="documentType" name="documentType" required>
+    <br>
+    <label for="uploadFile">Choose File:</label>
+    <input type="file" id="uploadFile" name="uploadFile" accept=".pdf, .doc, .docx" required>
+    <br>
+    <button type="button" onclick="uploadDocument()">Upload Document</button>
+  </form>
+  <button class="back-to-home" onclick="window.location.href='index.html'">Back to Home</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Your existing script.js code
+
+      function uploadDocument() {
+        const documentType = document.getElementById('documentType').value;
+        const uploadFile = document.getElementById('uploadFile').files[0];
+
+        // Add logic to handle document upload (e.g., API request)
+        console.log('Document Uploaded. Document Type:', documentType, 'File:', uploadFile.name);
+        
+        // You can use FormData to send the file to the server using AJAX or fetch API
+        const formData = new FormData();
+        formData.append('documentType', documentType);
+        formData.append('uploadFile', uploadFile);
+
+        // Example of sending the file to the server using fetch API
+        /*
+        fetch('http://your-backend-api/upload', {
+          method: 'POST',
+          body: formData,
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error during document upload:', error));
+        */
+      }
+    });
+  </script>
+</body>
+
+</html>
